@@ -1,0 +1,9 @@
+/node_modules/
+
+.DS_Store
+*.bak
+.svelte-kit/
+/build/
+/static/data/json/
+/static/data/places.csv
+/package-lock.json
