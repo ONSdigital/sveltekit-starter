@@ -33,7 +33,7 @@ npm run build
 Before building the app, you'll need to customise the base paths in the **/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
 
 ```javascript
-export const base_prod = '/sveltekit-starter'; // Directory on the ONS website
+export const base_prod = '/visualisations/sveltekit-starter'; // Directory on the ONS website
 export const base_preview = '/sveltekit-starter'; // Directory on datavisweb preview server or Github Pages
 ```
 

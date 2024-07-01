@@ -2,8 +2,9 @@
 import adapter from '@sveltejs/adapter-static';
 import { base_preview, base_prod } from "./src/app.config.js";
 
-const base = process.env.APP_ENV === 'preview' ? base_preview : base_prod;
+const preview = process.env.PUBLIC_APP_ENV === 'preview';
 const production = process.env.NODE_ENV === 'production';
+const base = preview ? base_preview : production ? base_prod : '';
 
 const config = {
 	kit: {
@@ -13,13 +14,14 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			strict: false,
+			fallback: preview ? '404.html' : undefined
 		}),
 		prerender: {
 			handleHttpError: 'warn',
 			handleMissingId: 'warn',
 		},
 		paths: {
-			base: production ? base : '',
+			base,
 			relative: false,
 		}
 	}
