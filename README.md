@@ -37,7 +37,7 @@ export const base_prod = '/visualisations/sveltekit-starter'; // Directory on th
 export const base_preview = '/sveltekit-starter'; // Directory on datavisweb preview server or Github Pages
 ```
 
-To build the preview version of the app (where the only real difference is the path), you'll need to run this command:
+To build the preview version of the app, which uses the alternate **base_preview** path, you'll need to run this command:
 
 ```bash
 npm run build:preview
