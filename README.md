@@ -24,7 +24,7 @@ To do more with the ONS svelte-components library, you will probably want to ref
 
 ## Building the app
 
-When you're ready to publish the app (either for preview or for production), you'll need to run the **build** command. This will build a static version of the app in the **/build** folder, which can be copied to wherever you want to host the app:
+When you're ready to publish the app (either for preview or for production), you'll need to run the **build** or **build:preview** command. This will build a static version of the app in the **/build** folder, the contents of which can be copied to wherever you want to host the app:
 
 ```bash
 npm run build
@@ -35,6 +35,12 @@ Before building the app, you'll need to customise the base paths in the **/app.c
 ```javascript
 export const base_prod = '/sveltekit-starter'; // Directory on the ONS website
 export const base_preview = '/sveltekit-starter'; // Directory on datavisweb preview server or Github Pages
+```
+
+To build the preview version of the app (where the only real difference is the path), you'll need to run this command:
+
+```bash
+npm run build:preview
 ```
 
 ## Additional templates
