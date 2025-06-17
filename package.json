@@ -15,7 +15,7 @@
   "author": "Ahmad Barclay",
   "license": "MIT",
   "devDependencies": {
-    "@onsvisual/svelte-components": "^0.1.72",
+    "@onsvisual/svelte-components": "^1.0.0-next.4",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.15.8",
     "cross-env": "^7.0.3",

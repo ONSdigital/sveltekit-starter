@@ -3,7 +3,7 @@
   import {
     Header,
     Section,
-    Cards,
+    Grid,
     Card,
     Footer,
   } from "@onsvisual/svelte-components";
@@ -17,17 +17,17 @@
   </p>
 </Section>
 
-<Cards>
-  <Card title="Regular article" href="{base}/article">
+<Grid>
+  <Card title="Regular article" href="{base}/article" mode="featured" baseline>
     An article page in a style that matches the ONS website.
   </Card>
-  <Card title="Feature article" href="{base}/feature">
+  <Card title="Feature article" href="{base}/feature" mode="featured" baseline>
     A full page template for scrollytelling or media-rich articles.
   </Card>
-  <Card title="Embedded interactive" href="{base}/embed">
+  <Card title="Embedded interactive" href="{base}/embed" mode="featured" baseline>
     A template for interactive content to be embedded within an iframe.
   </Card>
-</Cards>
+</Grid>
 
 <Section>
   <p>

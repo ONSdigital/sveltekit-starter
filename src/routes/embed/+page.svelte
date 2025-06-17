@@ -3,13 +3,15 @@
 </script>
 
 <Embed>
-  <Highlight height="auto">
-    <h2>This is a sub-headline</h2>
-    <p style:font-size="1rem">This is a description for the selector below</p>
-    <Select floatingConfig="{{ strategy: 'fixed' }}" hideLabel />
+  <Highlight bigText={false} marginBottom={false}>
+    <div style:padding="0 12px">
+      <h2>This is a sub-headline</h2>
+      <p>This is a description of the embedded interactive.</p>
+      <Select label="Select your area" />
+    </div>
   </Highlight>
 
-  <Section title="Section title" marginTop>
+  <Section title="Section title" marginTop={true}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -22,8 +24,8 @@
     </p>
   </Section>
 
-  <Grid colwidth="medium" caption="This is a caption text">
-    <div class="grid-cell"></div>
+  <Grid width="medium" caption="This is a caption text">
+    <div class="placeholder"></div>
   </Grid>
 
   <Section title="Another section title">
@@ -43,3 +45,12 @@
     </p>
   </Section>
 </Embed>
+
+<style>
+  .placeholder {
+		background: var(--ons-color-grey-10);
+		padding: 12px;
+		height: 300px;
+    width: 100%;
+	}
+</style>
