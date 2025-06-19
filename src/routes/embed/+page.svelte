@@ -45,12 +45,3 @@
     </p>
   </Section>
 </Embed>
-
-<style>
-  .placeholder {
-		background: var(--ons-color-grey-10);
-		padding: 12px;
-		height: 300px;
-    width: 100%;
-	}
-</style>
