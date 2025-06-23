@@ -1,0 +1,1 @@
+import{e as c,u as o,r as d,d as i,s as u}from"./Dth0lIki.js";function k(e,n,s){c(()=>{var r=o(()=>n(e,s==null?void 0:s())||{});if(s&&(r!=null&&r.update)){var a=!1,t={};d(()=>{var f=s();i(f),a&&u(t,f)&&(t=f,r.update(f))}),a=!0}if(r!=null&&r.destroy)return()=>r.destroy()})}export{k as a};
