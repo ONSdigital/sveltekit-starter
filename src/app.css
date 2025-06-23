@@ -1,4 +1,7 @@
 /* Use this file for app specific CSS and overrides */
-.grid-cell {
-  background: #e0e0e0;
-}
+.placeholder {
+		background: var(--ons-color-grey-10);
+		padding: 12px;
+		height: 300px;
+    width: 100%;
+	}
