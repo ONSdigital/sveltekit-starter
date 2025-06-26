@@ -15,8 +15,8 @@
   "author": "Ahmad Barclay",
   "license": "MIT",
   "devDependencies": {
-    "@onsvisual/svelte-charts": "^0.4.3",
-    "@onsvisual/svelte-components": "^1.0.1",
+    "@onsvisual/svelte-charts": "^0.4.11",
+    "@onsvisual/svelte-components": "^1.0.8",
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.5.27",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
