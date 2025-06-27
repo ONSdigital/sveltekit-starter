@@ -30,7 +30,7 @@ When you're ready to publish the app (either for preview or for production), you
 npm run build
 ```
 
-Before building the app, you'll need to customise the base paths in the **/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
+Before building the app, you'll need to customise the base paths in the **/src/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
 
 ```javascript
 export const base_prod = '/visualisations/sveltekit-starter'; // Directory on the ONS website
