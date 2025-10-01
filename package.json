@@ -1,6 +1,6 @@
 {
   "name": "@onsvisual/sveltekit-starter",
-  "homepage": "http://onsvisual.github.io/sveltekit-starter",
+  "homepage": "http://onsdigital.github.io/sveltekit-starter",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite dev",
