@@ -9,7 +9,7 @@
   } from "@onsvisual/svelte-components";
 </script>
 
-<Header compact title="Svelte Kit starter templates" />
+<Header title="Svelte Kit starter templates" />
 
 <Section marginTop="{true}">
   <p>

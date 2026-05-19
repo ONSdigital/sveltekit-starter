@@ -20,7 +20,7 @@
   let scrollerColor = $state(scrollerColors[0]);
 </script>
 
-<Header compact />
+<Header />
 	<Main>
 		<Hero
 			theme="blue"
