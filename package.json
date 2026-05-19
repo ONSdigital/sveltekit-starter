@@ -16,16 +16,16 @@
   "license": "MIT",
   "devDependencies": {
     "@onsvisual/svelte-charts": "^0.4.11",
-    "@onsvisual/svelte-components": "^1.0.21",
+    "@onsvisual/svelte-components": "^1.1.29",
     "@sveltejs/adapter-static": "^3.0.0",
-    "@sveltejs/kit": "^2.5.27",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@sveltejs/kit": "^2.60.1",
+    "@sveltejs/vite-plugin-svelte": "^4.0.4",
     "cross-env": "^7.0.3",
-    "gh-pages": "^6.1.1",
-    "prettier": "^3.1.0",
+    "gh-pages": "^6.3.0",
+    "prettier": "^3.8.3",
     "prettier-plugin-svelte": "^3.2.6",
-    "svelte": "^5.0.0",
-    "vite": "^5.4.4"
+    "svelte": "^5.55.8",
+    "vite": "^5.4.21"
   },
   "dependencies": {
     "sirv-cli": "^1.0.0"
