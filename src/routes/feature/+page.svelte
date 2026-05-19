@@ -17,7 +17,7 @@
   } from "@onsvisual/svelte-components";
 
   const scrollerColors = ["#ddd", "#777", "#222"];
-  let scrollerColor = scrollerColors[0];
+  let scrollerColor = $state(scrollerColors[0]);
 </script>
 
 <Header compact />
