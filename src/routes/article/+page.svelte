@@ -1,9 +1,9 @@
 <script>
   import {
+    PhaseBanner,
     Header,
     Breadcrumb,
     Hero,
-    Theme,
     Main,
     Section,
     Grid,
@@ -20,6 +20,7 @@
   ];
 </script>
 
+<PhaseBanner phase="Prototype" />
 <Header />
 <Breadcrumb
   links="{[

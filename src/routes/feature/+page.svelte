@@ -1,5 +1,6 @@
 <script>
   import {
+	PhaseBanner,
     Header,
     Hero,
     Highlight,
@@ -20,6 +21,7 @@
   let scrollerColor = $state(scrollerColors[0]);
 </script>
 
+<PhaseBanner phase="Prototype" />
 <Header />
 	<Main>
 		<Hero
