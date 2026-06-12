@@ -8,7 +8,7 @@
     "build:preview": "cross-env PUBLIC_APP_ENV=preview vite build",
     "package": "vite package",
     "preview": "vite preview",
-    "deploy": "gh-pages -d build -t true",
+    "deploy": "gh-pages -d build -t",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
