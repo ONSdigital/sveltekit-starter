@@ -27,6 +27,9 @@
   <Card title="Embedded interactive" href="{base}/embed" mode="featured" baseline>
     A template for interactive content to be embedded within an iframe.
   </Card>
+  <Card title="Map and search" href="{base}/mapsearch" mode="featured" baseline>
+    A template for an interactive Map with a search box.
+  </Card>
 </Grid>
 
 <Section>
