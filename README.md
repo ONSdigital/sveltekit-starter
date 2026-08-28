@@ -2,7 +2,9 @@
 
 Starter page templates using the [ONS svelte-components library](https://github.com/ONSvisual/svelte-components/).
 
-A preview of these templates can be [found here](https://onsvisual.github.io/sveltekit-starter/).
+**[→ View live demo](https://onsdigital.github.io/sveltekit-starter/)**
+
+A preview of these templates can be [found here](https://onsdigital.github.io/sveltekit-starter/).
 
 ## Using these templates
 
@@ -22,7 +24,7 @@ You will find the code for the starter templates within the /src/routes/ folder.
 
 To do more with the ONS svelte-components library, you will probably want to refer to the [Storybook pages](https://onsvisual.github.io/svelte-components/).
 
-## Building the app
+## Building and Deploying
 
 When you're ready to publish the app (either for preview or for production), you'll need to run the **build** or **build:preview** command. This will build a static version of the app in the **/build** folder, the contents of which can be copied to wherever you want to host the app:
 
@@ -30,7 +32,24 @@ When you're ready to publish the app (either for preview or for production), you
 npm run build
 ```
 
-Before building the app, you'll need to customise the base paths in the **/src/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
+### Automatic Deployment
+
+This repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys to GitHub Pages on every push to `main`. 
+
+To enable automatic deployment:
+1. Go to **Settings → Pages**
+2. Set **Source** to "Deploy from a branch"
+3. Set **Branch** to `gh-pages` and **Folder** to `/ (root)`
+4. Save
+
+The workflow will:
+- Build the app using `npm run build:preview`
+- Deploy to GitHub Pages automatically
+- Be accessible at `https://onsdigital.github.io/your-repo-name/`
+
+### Configuration
+
+Before building or deploying, customise the base paths in the **/src/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
 
 ```javascript
 export const base_prod = '/visualisations/sveltekit-starter'; // Directory on the ONS website
