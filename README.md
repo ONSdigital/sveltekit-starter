@@ -4,8 +4,6 @@ Starter page templates using the [ONS svelte-components library](https://github.
 
 **[→ View live demo](https://onsdigital.github.io/sveltekit-starter/)**
 
-A preview of these templates can be [found here](https://onsdigital.github.io/sveltekit-starter/).
-
 ## Using these templates
 
 Create a fork or local copy of this repository ([ZIP download](https://github.com/ONSvisual/sveltekit-starter/archive/refs/heads/main.zip)), and then run the following command to install dependencies:
