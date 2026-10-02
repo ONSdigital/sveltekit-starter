@@ -1,7 +1,7 @@
 /* Use this file for app specific CSS and overrides */
 .placeholder {
-		background: var(--ons-color-grey-10);
-		padding: 12px;
-		height: 300px;
-    width: 100%;
-	}
+	background: var(--ons-color-grey-10);
+	padding: 12px;
+	height: 300px;
+	width: 100%;
+}

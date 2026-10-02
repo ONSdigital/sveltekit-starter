@@ -24,8 +24,10 @@
 
 	let period = $derived(data[0]?.period);
 
-	const formatValue = (d) => d.toLocaleString("en-GB", { maximumFractionDigits: indicator.decimalPlaces });
-	const formatPeriod = (d) => d?.toLocaleDateString?.("en-GB", { day: "numeric", month: "long", year: "numeric" }) ?? d;
+	const formatValue = (d) =>
+		d.toLocaleString("en-GB", { maximumFractionDigits: indicator.decimalPlaces });
+	const formatPeriod = (d) =>
+		d?.toLocaleDateString?.("en-GB", { day: "numeric", month: "long", year: "numeric" }) ?? d;
 
 	onMount(async () => {
 		try {
@@ -38,28 +40,35 @@
 </script>
 
 <Container width="medium" cls="ons-u-mb-s">
-    <h1 class="ons-u-mt-l">{indicator.label} by local authority</h1>
-        <h2 class="map-title">
-            {indicator.label} ({indicator.unit}), {formatPeriod(period)}
-        </h2>
-    {#if loadError}
-        <div class="error-message">
-            <p><strong>Error:</strong> {loadError}</p>
-        </div>
-    {:else if loading}
-        <div class="loading-message">
-            <p>Loading map data...</p>
-        </div>
-    {:else}
-        <AreaSearch {features} bind:selected />
-    {/if}
+	<h1 class="ons-u-mt-l">{indicator.label} by local authority</h1>
+	<h2 class="map-title">
+		{indicator.label} ({indicator.unit}), {formatPeriod(period)}
+	</h2>
+	{#if loadError}
+		<div class="error-message">
+			<p><strong>Error:</strong> {loadError}</p>
+		</div>
+	{:else if loading}
+		<div class="loading-message">
+			<p>Loading map data...</p>
+		</div>
+	{:else}
+		<AreaSearch {features} bind:selected />
+	{/if}
 </Container>
 
 <Container width="medium">
-    {#if data.length && features.length}
-        <ChoroplethMap {data} {features} metadata={indicator} bind:selected bind:hovered {formatValue} />
-        <p class="map-source">Source: {indicator.source}</p>
-    {/if}
+	{#if data.length && features.length}
+		<ChoroplethMap
+			{data}
+			{features}
+			metadata={indicator}
+			bind:selected
+			bind:hovered
+			{formatValue}
+		/>
+		<p class="map-source">Source: {indicator.source}</p>
+	{/if}
 </Container>
 
 <style>
@@ -94,7 +103,7 @@
 	.map-title {
 		margin: -20px 0 12px;
 		font-size: 1.125rem;
-        font-weight: 400;
+		font-weight: 400;
 	}
 
 	.map-source {

@@ -38,7 +38,9 @@
 		// Fall back to postcode suggestions only when no area names match
 		if (query && results.length === 0) {
 			const postcodes = await fetchPostcodes(query);
-			postcodes.forEach((postcode) => results.push({ id: postcode, label: postcode, type: "postcode" }));
+			postcodes.forEach((postcode) =>
+				results.push({ id: postcode, label: postcode, type: "postcode" })
+			);
 		}
 
 		// Ignore results for an earlier query that resolved after a later one

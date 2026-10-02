@@ -1,9 +1,9 @@
-import { asset } from '$app/paths';
-import { feature } from 'topojson-client';
-import { csvParse, autoType } from 'd3-dsv';
-import { ckmeans } from 'simple-statistics';
-import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
-import { topoPath, geoLevel } from './config.js';
+import { asset } from "$app/paths";
+import { feature } from "topojson-client";
+import { csvParse, autoType } from "d3-dsv";
+import { ckmeans } from "simple-statistics";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
+import { topoPath, geoLevel } from "./config.js";
 
 /**
  * Load the indicator CSV and the matching boundaries from the TopoJSON.
@@ -54,7 +54,7 @@ export function calculateBounds(geometry) {
 		maxLat = -Infinity;
 
 	function processBounds(coords) {
-		if (typeof coords[0] === 'number' && typeof coords[1] === 'number') {
+		if (typeof coords[0] === "number" && typeof coords[1] === "number") {
 			const [lng, lat] = coords;
 			minLng = Math.min(minLng, lng);
 			maxLng = Math.max(maxLng, lng);
@@ -70,8 +70,8 @@ export function calculateBounds(geometry) {
 	return isFinite(minLng) ? [minLng, minLat, maxLng, maxLat] : null;
 }
 
-function round(val, dp, mode = 'round') {
-	const rounder = mode === 'floor' ? Math.floor : mode === 'ceil' ? Math.ceil : Math.round;
+function round(val, dp, mode = "round") {
+	const rounder = mode === "floor" ? Math.floor : mode === "ceil" ? Math.ceil : Math.round;
 	const multiplier = Math.pow(10, dp);
 	return rounder(val * multiplier) / multiplier;
 }
@@ -92,7 +92,7 @@ export function valuesToBreaks(values, dp = 0, count = 5) {
 	return Array.from(
 		new Set(
 			breaks.map((d, i) =>
-				round(d, dp, i === 0 ? 'floor' : i === breaks.length - 1 ? 'ceil' : 'round')
+				round(d, dp, i === 0 ? "floor" : i === breaks.length - 1 ? "ceil" : "round")
 			)
 		)
 	);
@@ -118,7 +118,7 @@ export function valueToColor(value, breaks, colors) {
  * @returns {Promise<string[]>} Array of postcode suggestions
  */
 export async function fetchPostcodes(query) {
-	const q = query === null || typeof query === 'undefined' ? '' : String(query).trim();
+	const q = query === null || typeof query === "undefined" ? "" : String(query).trim();
 	if (!q) return [];
 
 	const url = `https://api.postcodes.io/postcodes/${encodeURIComponent(q)}/autocomplete`;

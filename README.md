@@ -32,15 +32,17 @@ npm run build
 
 ### Automatic Deployment
 
-This repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys to GitHub Pages on every push to `main`. 
+This repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys to GitHub Pages on every push to `main`.
 
 To enable automatic deployment:
+
 1. Go to **Settings → Pages**
 2. Set **Source** to "Deploy from a branch"
 3. Set **Branch** to `gh-pages` and **Folder** to `/ (root)`
 4. Save
 
 The workflow will:
+
 - Build the app using `npm run build:preview`
 - Deploy to GitHub Pages automatically
 - Be accessible at `https://onsdigital.github.io/your-repo-name/`
@@ -50,8 +52,8 @@ The workflow will:
 Before building or deploying, customise the base paths in the **/src/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
 
 ```javascript
-export const base_prod = '/visualisations/sveltekit-starter'; // Directory on the ONS website
-export const base_preview = '/sveltekit-starter'; // Directory on datavisweb preview server or Github Pages
+export const base_prod = "/visualisations/sveltekit-starter"; // Directory on the ONS website
+export const base_preview = "/sveltekit-starter"; // Directory on datavisweb preview server or Github Pages
 ```
 
 To build the preview version of the app, which uses the alternate **base_preview** path, you'll need to run this command:

@@ -1,11 +1,11 @@
 <script>
 	// Adapted from the Explore Local Statistics choropleth map:
 	// https://github.com/ONSdigital/explore-local-statistics-app/blob/develop/src/lib/components/charts/Map.svelte
-	import { asset } from '$app/paths';
-	import { Map, MapSource, MapLayer, MapTooltip } from '@onsvisual/svelte-maps';
-	import MapLegend from './MapLegend.svelte';
-	import { valuesToBreaks, valueToColor } from './map-utils.js';
-	import { colors as palette, ukBounds, maxBounds, mapStylePath } from './config.js';
+	import { asset } from "$app/paths";
+	import { Map, MapSource, MapLayer, MapTooltip } from "@onsvisual/svelte-maps";
+	import MapLegend from "./MapLegend.svelte";
+	import { valuesToBreaks, valueToColor } from "./map-utils.js";
+	import { colors as palette, ukBounds, maxBounds, mapStylePath } from "./config.js";
 
 	let {
 		data,
@@ -18,7 +18,7 @@
 	} = $props();
 
 	const fitBoundsOptions = { padding: 10 };
-	const featureCollection = (features) => ({ type: 'FeatureCollection', features });
+	const featureCollection = (features) => ({ type: "FeatureCollection", features });
 
 	let map = $state.raw();
 
@@ -75,8 +75,8 @@
 					id="fills"
 					type="fill"
 					paint={{
-						'fill-color': ['get', 'color'],
-						'fill-opacity': 1
+						"fill-color": ["get", "color"],
+						"fill-opacity": 1
 					}}
 					order="place_other"
 					hover
@@ -84,14 +84,14 @@
 					select
 					bind:selected
 				>
-					<MapTooltip content={lookup[hovered]?.properties?.areanm || ''} />
+					<MapTooltip content={lookup[hovered]?.properties?.areanm || ""} />
 				</MapLayer>
 				<MapLayer
 					id="outline"
 					type="line"
 					paint={{
-						'line-color': 'white',
-						'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 11, 1.2]
+						"line-color": "white",
+						"line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 11, 1.2]
 					}}
 					order="place_other"
 				/>
@@ -99,13 +99,13 @@
 					id="hovered"
 					type="line"
 					paint={{
-						'line-color': [
-							'case',
-							['==', ['feature-state', 'hovered'], true],
+						"line-color": [
+							"case",
+							["==", ["feature-state", "hovered"], true],
 							palette.hovered,
-							'rgba(255,255,255,0)'
+							"rgba(255,255,255,0)"
 						],
-						'line-width': 2.5
+						"line-width": 2.5
 					}}
 					order="place_suburb"
 				/>
@@ -120,8 +120,8 @@
 					id="highlighted-outline"
 					type="line"
 					paint={{
-						'line-color': 'white',
-						'line-width': 4.5
+						"line-color": "white",
+						"line-width": 4.5
 					}}
 					order="place_other"
 				/>
@@ -129,8 +129,8 @@
 					id="highlighted"
 					type="line"
 					paint={{
-						'line-color': palette.selected,
-						'line-width': 2.5
+						"line-color": palette.selected,
+						"line-width": 2.5
 					}}
 					order="place_other"
 				/>
@@ -145,7 +145,7 @@
 		bind:selected
 		prefix={metadata.prefix}
 		suffix={metadata.suffix}
-		labelSuffix={metadata.unit ? ` ${metadata.unit}` : ''}
+		labelSuffix={metadata.unit ? ` ${metadata.unit}` : ""}
 		format={formatValue}
 	/>
 </div>

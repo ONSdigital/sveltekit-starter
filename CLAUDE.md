@@ -29,6 +29,7 @@ There is no test suite.
   - `PUBLIC_APP_ENV=preview`: `base_preview` (`/sveltekit-starter`, the datavisweb preview server or GitHub Pages)
 
   Never hard-code root-absolute URLs, and do not use the deprecated `base`/`assets` exports. Wrap route links in `resolve()` from `$app/paths` (e.g. `resolve("/article/")`) and static-file URLs (anything in `static/`, including `fetch` calls) in `asset()` (e.g. `asset("/style.json")`). `paths.relative` is `false`.
+
 - **Prerendering** (`src/routes/+layout.js`): prerendering is on unless `PUBLIC_APP_ENV=preview`, in which case the preview build is an SPA with a `404.html` fallback. `trailingSlash = 'always'`.
 - **`scripts/js-fix.js`** runs after `npm run build` only. It prepends `//js\n` to every JS file in `build/_app/` to avoid MIME-type errors on the ONS hosting. `build:preview` skips it.
 - **`vite.config.js`** drops `console` and `debugger` in builds, so `console.log` output only appears in dev.
@@ -39,6 +40,7 @@ There is no test suite.
 ## Map + search template (`src/routes/map/`)
 
 This route is self-contained: its components, config and helpers all live in the folder, and `src/routes/map/README.md` explains how they fit together. In summary:
+
 - It draws an ELS-style choropleth of `static/data/median-age.csv`, using LTLA boundaries from `static/master-topo.json` and the basemap in `static/data/mapstyle.json`.
 - Only boundaries with a CSV row are drawn and searchable. The TopoJSON also contains superseded districts that overlap current ones, so don't drop this filter.
 - Map data is kept in `$state.raw`, because it is passed to MapLibre's web worker.

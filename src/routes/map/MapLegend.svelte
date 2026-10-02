@@ -1,7 +1,7 @@
 <script>
 	// Adapted from the Explore Local Statistics map legend, simplified for a single selected area:
 	// https://github.com/ONSdigital/explore-local-statistics-app/blob/develop/src/lib/components/charts/MapLegend.svelte
-	import { colors as palette } from './config.js';
+	import { colors as palette } from "./config.js";
 
 	let {
 		data,
@@ -13,9 +13,9 @@
 		breaks,
 		colors,
 		format = (d) => d,
-		prefix = '',
-		suffix = '', // Added to tick labels and area labels
-		labelSuffix = '', // Added to area labels only (eg. ' years')
+		prefix = "",
+		suffix = "", // Added to tick labels and area labels
+		labelSuffix = "", // Added to area labels only (eg. ' years')
 		snapTicks = true,
 		markerPadding = 6
 	} = $props();
@@ -47,8 +47,8 @@
 		const update = () => {
 			el.style.transform =
 				el.offsetLeft + el.offsetWidth > width
-					? 'translateX(-100%) translateX(1.5px)'
-					: 'translateX(-1.5px)';
+					? "translateX(-100%) translateX(1.5px)"
+					: "translateX(-1.5px)";
 		};
 		update();
 		return { update };
@@ -97,7 +97,7 @@
 	</div>
 
 	{#each markers as d (d.areacd)}
-		<div style:opacity={selectedArea && hoveredArea && d.areacd !== hovered ? '30%' : null}>
+		<div style:opacity={selectedArea && hoveredArea && d.areacd !== hovered ? "30%" : null}>
 			<div
 				class="marker"
 				style:width="{lineWidth}px"
