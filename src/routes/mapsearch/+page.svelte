@@ -1,3 +1,10 @@
+<script module>
+	// This config ensures that maps render correctly in the app
+	import { setWorkerUrl } from "maplibre-gl";
+	import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
+	setWorkerUrl(maplibreWorkerUrl);
+</script>
+
 <script>
   import { onMount } from "svelte";
   import { asset } from "$app/paths";
