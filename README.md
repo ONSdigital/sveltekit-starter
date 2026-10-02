@@ -49,12 +49,17 @@ The workflow will:
 
 ### Configuration
 
-Before building or deploying, customise the base paths in the **/src/app.config.js** file. The default path is **/sveltekit-starter**. You can set a separate base-relative path for a preview server (eg. **/my-app**) and for a production server (eg. **/visualisations/my-app**):
+The base paths for the preview and production builds are set in the **/src/app.config.js** file:
 
 ```javascript
-export const base_prod = "/visualisations/sveltekit-starter"; // Directory on the ONS website
+export const base_prod = null; // Directory on the ONS website (null = any path)
 export const base_preview = "/sveltekit-starter"; // Directory on datavisweb preview server or Github Pages
 ```
+
+- **null** (the default for production) builds the app with relative URLs. The contents of the **/build** folder can then be deployed to any path or sub-path.
+- **A path** (eg. **/visualisations/my-app**) builds the app for that directory only, with absolute URLs.
+
+The preview build needs a path, because it isn't prerendered and relies on a **404.html** fallback page, which always uses absolute URLs.
 
 To build the preview version of the app, which uses the alternate **base_preview** path, you'll need to run this command:
 

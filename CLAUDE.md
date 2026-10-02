@@ -11,7 +11,7 @@ A collection of SvelteKit starter page templates for ONS (Office for National St
 ```bash
 npm install
 npm run dev            # dev server at localhost:5173, base path ''
-npm run build          # production static build -> /build (base_prod), then scripts/js-fix.js
+npm run build          # production static build -> /build (relative URLs by default), then scripts/js-fix.js
 npm run build:preview  # preview/GitHub Pages build (base_preview, SPA fallback 404.html)
 npm run preview        # serve the built app
 npm run lint           # prettier --check .
@@ -34,10 +34,13 @@ There is no test suite, so check UI changes by running the dev server and using 
 - **Static only**: `@sveltejs/adapter-static` outputs to `build/`. There is no server-side code.
 - **Base path switching** (`svelte.config.js`): the base path comes from `src/app.config.js`.
   - Dev: `''`
-  - `NODE_ENV=production`: `base_prod` (`/visualisations/sveltekit-starter`, the ONS website)
+  - `NODE_ENV=production`: `base_prod`. It defaults to `null`, which means no base path.
   - `PUBLIC_APP_ENV=preview`: `base_preview` (`/sveltekit-starter`, the datavisweb preview server or GitHub Pages)
+  - With no base path, `paths.relative` is `true`, so the build works at any path or sub-path. This only works for prerendered pages. Each page works out its base from its own URL in the browser.
+  - With a base path, `paths.relative` is `false`, and the app works only at that path.
+  - Keep `base_preview` set to a path. The preview build isn't prerendered and relies on a `404.html` fallback, which SvelteKit always gives absolute URLs.
 
-  Never hard-code root-absolute URLs, and do not use the deprecated `base`/`assets` exports. Wrap route links in `resolve()` from `$app/paths` (e.g. `resolve("/article/")`) and static-file URLs (anything in `static/`, including `fetch` calls) in `asset()` (e.g. `asset("/data/mapstyle.json")`). `paths.relative` is `false`.
+  Never hard-code root-absolute URLs, and do not use the deprecated `base`/`assets` exports. Wrap route links in `resolve()` from `$app/paths` (e.g. `resolve("/article/")`) and static-file URLs (anything in `static/`, including `fetch` calls) in `asset()` (e.g. `asset("/data/mapstyle.json")`).
 
 - **Prerendering** (`src/routes/+layout.js`): prerendering is on unless `PUBLIC_APP_ENV=preview`, in which case the preview build is an SPA with a `404.html` fallback. `trailingSlash = 'always'`.
 - **`scripts/js-fix.js`** runs after `npm run build` only. It prepends `//js\n` to every JS file in `build/_app/` to avoid MIME-type errors on the ONS hosting. `build:preview` skips it.
