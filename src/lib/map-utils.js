@@ -1,3 +1,4 @@
+import { asset } from '$app/paths';
 import * as topojson from 'topojson-client';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 
@@ -10,10 +11,10 @@ const UK_POSTCODE_RE = /^[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}$/i;
 
 /**
  * Load and cache TopoJSON data
- * @param {string} topoPath - Path to TopoJSON file (default: '/master-topo.json')
+ * @param {string} topoPath - Path to TopoJSON file (default: asset('/master-topo.json'))
  * @returns {object|null} Loaded TopoJSON data or null if error
  */
-export async function loadTopoJSON(topoPath = '/master-topo.json') {
+export async function loadTopoJSON(topoPath = asset('/master-topo.json')) {
   if (topoData) return topoData;
   
   try {

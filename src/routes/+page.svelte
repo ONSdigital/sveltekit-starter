@@ -1,5 +1,5 @@
 <script>
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import {
     Header,
     Section,
@@ -18,16 +18,16 @@
 </Section>
 
 <Grid>
-  <Card title="Regular article" href="{base}/article" mode="featured" baseline>
+  <Card title="Regular article" href={resolve("/article/")} mode="featured" baseline>
     An article page in a style that matches the ONS website.
   </Card>
-  <Card title="Feature article" href="{base}/feature" mode="featured" baseline>
+  <Card title="Feature article" href={resolve("/feature/")} mode="featured" baseline>
     A full page template for scrollytelling or media-rich articles.
   </Card>
-  <Card title="Embedded interactive" href="{base}/embed" mode="featured" baseline>
+  <Card title="Embedded interactive" href={resolve("/embed/")} mode="featured" baseline>
     A template for interactive content to be embedded within an iframe.
   </Card>
-  <Card title="Map and search" href="{base}/mapsearch" mode="featured" baseline>
+  <Card title="Map and search" href={resolve("/mapsearch/")} mode="featured" baseline>
     A template for an interactive Map with a search box.
   </Card>
 </Grid>

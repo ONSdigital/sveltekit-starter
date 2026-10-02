@@ -285,12 +285,12 @@ calculateBounds(geometry)
 
 ### TopoJSON Path
 ```javascript
-const response = await fetch('/master-topo.json');
+const response = await fetch(asset('/master-topo.json'));
 ```
 
 ### Style Path
 ```javascript
-const styleResponse = await fetch('/style.json');
+const styleResponse = await fetch(asset('/style.json'));
 ```
 
 ### UK Bounds

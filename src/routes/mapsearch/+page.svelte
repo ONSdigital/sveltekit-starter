@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { asset } from "$app/paths";
   import { Map, MapSource, MapLayer } from "@onsvisual/svelte-maps";
   import { AccessibleSelect, Container, Section } from "@onsvisual/svelte-components";
   import { loadTopoJSON, getBoundariesGeoJSON, getBoundaryById, getBoundaryByName, getAreaNames, fetchPostcodes, findBoundaryAtPoint } from "../../lib/map-utils.js";
@@ -38,7 +39,7 @@
       geojson = getBoundariesGeoJSON();
       
       // Load the style
-      const styleResponse = await fetch('/style.json');
+      const styleResponse = await fetch(asset('/style.json'));
       mapStyle = await styleResponse.json();
       
       loading = false;
