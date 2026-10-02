@@ -27,8 +27,8 @@
   <Card title="Embedded interactive" href={resolve("/embed/")} mode="featured" baseline>
     A template for interactive content to be embedded within an iframe.
   </Card>
-  <Card title="Map and search" href={resolve("/mapsearch/")} mode="featured" baseline>
-    A template for an interactive Map with a search box.
+  <Card title="Map and search" href={resolve("/map/")} mode="featured" baseline>
+    A choropleth map in the style of Explore Local Statistics, with area and postcode search.
   </Card>
 </Grid>
 

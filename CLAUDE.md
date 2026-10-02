@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A collection of SvelteKit starter page templates for ONS (Office for National Statistics) data visualisation, built on the [`@onsvisual/svelte-components`](https://github.com/ONSvisual/svelte-components/) library ([Storybook docs](https://onsvisual.github.io/svelte-components/)). Each route in `src/routes/` is a self-contained template (`article`, `feature`, `embed`, `mapsearch`). The root `+page.svelte` is an index linking to them. The intended workflow is that users copy one template's `+page.svelte` over `src/routes/+page.svelte` and delete the rest.
+A collection of SvelteKit starter page templates for ONS (Office for National Statistics) data visualisation, built on the [`@onsvisual/svelte-components`](https://github.com/ONSvisual/svelte-components/) library ([Storybook docs](https://onsvisual.github.io/svelte-components/)). Each route in `src/routes/` is a self-contained template (`article`, `feature`, `embed`, `map`). The root `+page.svelte` is an index linking to them. The intended workflow is that users copy one template's `+page.svelte` over `src/routes/+page.svelte` and delete the rest.
 
 ## Commands
 
@@ -34,15 +34,15 @@ There is no test suite.
 - **`vite.config.js`** drops `console` and `debugger` in builds, so `console.log` output only appears in dev.
 - **Global styles**: `src/routes/+layout.svelte` imports the svelte-components CSS, the maplibre-gl CSS and `src/app.css`.
 - **`src/lib/config.js`** holds the analytics config (GTM ID and `analyticsProps` placeholders to fill in per product), the colour themes, and demo data (regions, palettes, units).
-- **Svelte 5** is installed, but the templates mix syntax. `feature` uses runes (`$state`), while `mapsearch` uses legacy `$:` reactive statements. Match the style of the file you are editing.
+- **Svelte 5** is installed, but the templates mix syntax. `feature` and `map` use runes (`$state`, `$props`). Match the style of the file you are editing. Components from `@onsvisual/svelte-components` and `@onsvisual/svelte-maps` still dispatch legacy events, so use `on:change`/`on:click` on them, or `bind:` their props.
 
-## Map + search template (`src/routes/mapsearch/`)
+## Map + search template (`src/routes/map/`)
 
-See `src/routes/mapsearch/MAPSEARCH_IMPLEMENTATION.md` for the full design. In summary:
-- `src/lib/map-utils.js` loads `static/master-topo.json` (UK boundaries at several geography levels, keyed by `areacd`/`areanm`) through `topojson-client` and caches it in module state.
-- It builds the name and code lookups, and does postcode autocomplete through the postcodes.io API.
-- It finds the LTLA at a point with `@turf/boolean-point-in-polygon`.
-- The page renders the map with `@onsvisual/svelte-maps` using `static/style.json`, and runs search with `AccessibleSelect`.
+This route is self-contained: its components, config and helpers all live in the folder, and `src/routes/map/README.md` explains how they fit together. In summary:
+- It draws an ELS-style choropleth of `static/data/median-age.csv`, using LTLA boundaries from `static/master-topo.json` and the basemap in `static/data/mapstyle.json`.
+- Only boundaries with a CSV row are drawn and searchable. The TopoJSON also contains superseded districts that overlap current ones, so don't drop this filter.
+- Map data is kept in `$state.raw`, because it is passed to MapLibre's web worker.
+- In `ChoroplethMap.svelte`, the `Map` import from svelte-maps shadows the global `Map`, so don't use `new Map()` in that file.
 
 ## Deployment
 
