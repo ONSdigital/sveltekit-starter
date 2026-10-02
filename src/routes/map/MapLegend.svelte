@@ -6,7 +6,7 @@
 	let {
 		data,
 		hovered = $bindable(null),
-		selectedArea = null,
+		selected = $bindable(null), // areacd of the selected area (clicking the legend selects an area)
 		lineWidth = 3,
 		barHeight = 15,
 		labelHeight = 20,
@@ -55,6 +55,7 @@
 	};
 
 	let cells = $derived(makeCells(data));
+	let selectedArea = $derived(selected ? data.find((d) => d.areacd === selected) : null);
 	let hoveredArea = $derived(
 		hovered && hovered !== selectedArea?.areacd ? data.find((d) => d.areacd === hovered) : null
 	);
@@ -117,11 +118,13 @@
 	{/each}
 
 	{#each cells as d (d.areacd)}
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div
-			class="block"
+			class="block cell"
 			style:width="{d.right - d.left}%"
 			style:left="{d.left}%"
 			onmouseenter={() => (hovered = d.areacd)}
+			onclick={() => (selected = d.areacd)}
 		></div>
 	{/each}
 </div>
@@ -139,6 +142,9 @@
 		position: absolute;
 		top: 0;
 		height: 100%;
+	}
+	.cell {
+		cursor: pointer;
 	}
 	.line {
 		position: absolute;

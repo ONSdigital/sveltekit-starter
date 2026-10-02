@@ -142,7 +142,7 @@
 		{breaks}
 		{colors}
 		bind:hovered
-		selectedArea={selectedFeature?.properties}
+		bind:selected
 		prefix={metadata.prefix}
 		suffix={metadata.suffix}
 		labelSuffix={metadata.unit ? ` ${metadata.unit}` : ''}
