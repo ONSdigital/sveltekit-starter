@@ -1,12 +1,12 @@
 # sveltekit-starter
 
-Starter page templates using the [ONS svelte-components library](https://github.com/ONSvisual/svelte-components/).
+Starter page templates using the [ONS svelte-components library](https://github.com/ONSdigital/svelte-components/).
 
 **[→ View live demo](https://onsdigital.github.io/sveltekit-starter/)**
 
 ## Using these templates
 
-Create a fork or local copy of this repository ([ZIP download](https://github.com/ONSvisual/sveltekit-starter/archive/refs/heads/main.zip)), and then run the following command to install dependencies:
+Create a fork or local copy of this repository ([ZIP download](https://github.com/ONSdigital/sveltekit-starter/archive/refs/heads/main.zip)), and then run the following command to install dependencies:
 
 ```bash
 npm install
@@ -20,7 +20,7 @@ npm run dev
 
 You will find the code for the starter templates within the /src/routes/ folder. You will probably want to take the **+page.svelte** file for the relevant template folder, overwrite the **/src/routes/+pages.svelte** file, and then delete the templates that you don't intend to use.
 
-To do more with the ONS svelte-components library, you will probably want to refer to the [Storybook pages](https://onsvisual.github.io/svelte-components/).
+To do more with the ONS svelte-components library, you will probably want to refer to the [Storybook pages](https://onsdigital.github.io/svelte-components/).
 
 ## Building and Deploying
 
@@ -71,5 +71,5 @@ npm run build:preview
 
 The following semi-automated journalism (AKA "robo-journalism") templates are also available:
 
-- [robo-article](https://github.com/ONSvisual/robo-article)
-- [robo-embed](https://github.com/ONSvisual/robo-embed)
+- [robo-article](https://github.com/ONSdigital/robo-article)
+- [robo-embed](https://github.com/ONSdigital/robo-embed)

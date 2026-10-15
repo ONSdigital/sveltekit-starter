@@ -8,9 +8,9 @@
 <Section marginTop={true}>
 	<p>
 		Select a template below to preview. These templates are created using the <a
-			href="https://github.com/ONSvisual/svelte-components/">ONS svelte-components library</a
+			href="https://github.com/ONSdigital/svelte-components/">ONS svelte-components library</a
 		>. To use them in Svelte Kit projects, follow the
-		<a href="https://github.com/ONSvisual/sveltekit-starter/">guidance in this readme</a>.
+		<a href="https://github.com/ONSdigital/sveltekit-starter/">guidance in this readme</a>.
 	</p>
 </Section>
 
@@ -32,7 +32,7 @@
 <Section>
 	<p>
 		For more documentation and usage examples for the ONS svelte-components library, you can visit
-		the <a href="https://onsvisual.github.io/svelte-components/">Storybook pages</a>.
+		the <a href="https://onsdigital.github.io/svelte-components/">Storybook pages</a>.
 	</p>
 </Section>
 
