@@ -8,6 +8,7 @@
 
 <svelte:head>
 	<title>{page.data?.pageTitle || ""}</title>
+	<link rel="icon" type="image/x-icon" href="{app_url}/favicon.ico" />
 	<meta property="og:title" content={page.data?.pageTitle || ""} />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={page.data?.canonicalUrl || app_url} />
