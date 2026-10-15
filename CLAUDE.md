@@ -38,7 +38,7 @@ There is no test suite, so check UI changes by running the dev server and using 
   - `PUBLIC_APP_ENV=preview`: `base_preview` (`/sveltekit-starter`, the datavisweb preview server or GitHub Pages)
   - With no base path, `paths.relative` is `true`, so the build works at any path or sub-path. This only works for prerendered pages. Each page works out its base from its own URL in the browser.
   - With a base path, `paths.relative` is `false`, and the app works only at that path.
-  - Keep `base_preview` set to a path. The preview build isn't prerendered and relies on a `404.html` fallback, which SvelteKit always gives absolute URLs.
+  - `base_preview` must be a path, and `svelte.config.js` throws if it isn't. The preview build isn't prerendered, so multi-route apps (e.g. `/[areacode]/`) build quickly. It relies on a `404.html` fallback, which SvelteKit always gives absolute URLs. Both GitHub Pages and the internal preview server (via `web.config`) serve the `404.html`.
 
   Never hard-code root-absolute URLs, and do not use the deprecated `base`/`assets` exports. Wrap route links in `resolve()` from `$app/paths` (e.g. `resolve("/article/")`) and static-file URLs (anything in `static/`, including `fetch` calls) in `asset()` (e.g. `asset("/data/mapstyle.json")`).
 
