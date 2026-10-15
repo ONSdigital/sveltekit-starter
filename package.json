@@ -8,7 +8,6 @@
 		"build:preview": "cross-env PUBLIC_APP_ENV=preview vite build",
 		"package": "vite package",
 		"preview": "vite preview",
-		"deploy": "gh-pages -d build -t",
 		"lint": "prettier --check .",
 		"format": "prettier --write ."
 	},
@@ -24,7 +23,6 @@
 		"@turf/boolean-point-in-polygon": "^7.4.0",
 		"cross-env": "^7.0.3",
 		"d3-dsv": "^3.0.1",
-		"gh-pages": "^6.3.0",
 		"prettier": "^3.8.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"simple-statistics": "^7.12.1",
