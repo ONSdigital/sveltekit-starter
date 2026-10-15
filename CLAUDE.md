@@ -42,6 +42,12 @@ There is no test suite, so check UI changes by running the dev server and using 
 
   Never hard-code root-absolute URLs, and do not use the deprecated `base`/`assets` exports. Wrap route links in `resolve()` from `$app/paths` (e.g. `resolve("/article/")`) and static-file URLs (anything in `static/`, including `fetch` calls) in `asset()` (e.g. `asset("/data/mapstyle.json")`).
 
+- **`app_url`** (`src/app.config.js`) is the app's full public address, with no trailing slash. It is used only where a full URL is needed: share tags, the favicon, embed codes and the sitemap. It has no effect on the build or on paths, which come from `base_prod` and `base_preview`. Update it for each product.
+- **Page metadata**: the `load` in `src/routes/+layout.js` returns `pageTitle`, `pageDescription` and `canonicalUrl`, and `src/routes/+layout.svelte` turns these into the `<title>`, description, Open Graph and Twitter tags.
+  - To override the title or description for one route, add a `+page.js` that returns `pageTitle` and/or `pageDescription`. Page data is merged over layout data.
+  - `canonicalUrl` is `app_url` plus the current route. If the URL path starts with `app_url`'s path, that part is removed first, so the base isn't added twice.
+  - `og:image` (`static/img/og.png`) and the favicon use `{app_url}/...` rather than `asset()`, because share scrapers need absolute URLs. This is the only exception to the `asset()` rule above.
+  - The preview build is an SPA, so these tags are only added in the browser. Social scrapers won't see them on preview links, only on the prerendered production build.
 - **Prerendering** (`src/routes/+layout.js`): prerendering is on unless `PUBLIC_APP_ENV=preview`, in which case the preview build is an SPA with a `404.html` fallback. `trailingSlash = 'always'`.
 - **`scripts/js-fix.js`** runs after `npm run build` only. It prepends `//js\n` to every JS file in `build/_app/` to avoid MIME-type errors on the ONS hosting. `build:preview` skips it.
 - **`vite.config.js`** drops `console` and `debugger` in builds, so `console.log` output only appears in dev.
@@ -68,4 +74,4 @@ This route is self-contained: its components, config and helpers all live in the
 
 ## Deployment
 
-`.github/workflows/deploy.yml` runs `npm run build:preview` on pushes and PRs to `main`. On a push to `main`, it deploys `build/` to the `gh-pages` branch. Its actions are pinned to commit SHAs, so keep that pinning when you edit the workflow.
+`.github/workflows/deploy.yml` runs `npm run build:preview` on pushes and PRs to `main`. On a push to `main`, it deploys `build/` to the `gh-pages` branch. Its actions are pinned to exact version tags (e.g. `actions/checkout@v4.4.0`).
