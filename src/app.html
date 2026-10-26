@@ -3,6 +3,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script>
+			// Force browser to add a trailing slash before the app hydrates
+			(function () {
+				var path = location.pathname;
+				if (!/\/$/.test(path) && !/\.[^/]+$/.test(path)) {
+					location.replace(path + "/" + location.search + location.hash);
+				}
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body>
