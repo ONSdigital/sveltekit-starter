@@ -1,0 +1,1 @@
+import{a4 as f,h as l,a as u,a5 as h}from"./ytsbrCy0.js";import{a as c}from"./Dl6tlb0q.js";function p(s,a,t,o,e){if(l&&u(),a.$$host?.$$shadowRoot){const r=f("slot");if(t!=="default"&&(r.name=t),c(s,r),e!==null){const d=h();r.append(d),e(d)}return}var i=a.$$slots?.[t],n=!1;i===!0&&(i=a[t==="default"?"children":t],n=!0),i===void 0?e!==null&&e(s):i(s,n?()=>o:o)}export{p as s};
