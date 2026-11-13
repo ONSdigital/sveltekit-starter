@@ -86,32 +86,37 @@
 		on:enter={(e) => console.debug("enter", e)}
 		on:exit={(e) => console.debug("exit", e)}
 	>
-		<div slot="background">
-			<Container width="full" height="full" background={scrollerColor} />
-		</div>
-		<div slot="foreground">
-			<ScrollerSection>
-				<p>
-					When this first caption is visible, the background will appear <Em
-						color={scrollerColors[0]}>light grey</Em
-					>.
-				</p>
-			</ScrollerSection>
-			<ScrollerSection>
-				<p>
-					When this section caption is visible, the background will appear <Em
-						color={scrollerColors[1]}>dark grey</Em
-					>.
-				</p>
-			</ScrollerSection>
-			<ScrollerSection>
-				<p>
-					When this third caption is visible, the background will appear <Em
-						color={scrollerColors[2]}>black</Em
-					>.
-				</p>
-			</ScrollerSection>
-		</div>
+		<!-- svelte-components 2's Scroller takes snippets, not slots -->
+		{#snippet background()}
+			<div>
+				<Container width="full" height="full" background={scrollerColor} />
+			</div>
+		{/snippet}
+		{#snippet foreground()}
+			<div>
+				<ScrollerSection>
+					<p>
+						When this first caption is visible, the background will appear <Em
+							color={scrollerColors[0]}>light grey</Em
+						>.
+					</p>
+				</ScrollerSection>
+				<ScrollerSection>
+					<p>
+						When this section caption is visible, the background will appear <Em
+							color={scrollerColors[1]}>dark grey</Em
+						>.
+					</p>
+				</ScrollerSection>
+				<ScrollerSection>
+					<p>
+						When this third caption is visible, the background will appear <Em
+							color={scrollerColors[2]}>black</Em
+						>.
+					</p>
+				</ScrollerSection>
+			</div>
+		{/snippet}
 	</Scroller>
 
 	<Section title="Yet another section title">
