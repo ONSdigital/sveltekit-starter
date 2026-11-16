@@ -23,9 +23,11 @@
 <PhaseBanner phase="Prototype" />
 <Header />
 <Breadcrumb
-	links={[{ label: "Home", href: "/" }, { label: "This is a regular article" }]}
+	links={[
+		{ label: "Home", href: "https://www.ons.gov.uk/" },
+		{ label: "This is a regular article" }
+	]}
 	background="var(--ons-color-banner-bg)"
-	`
 />
 <Main>
 	<Hero

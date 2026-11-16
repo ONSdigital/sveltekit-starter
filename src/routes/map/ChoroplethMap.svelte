@@ -55,7 +55,12 @@
 		<Map
 			bind:map
 			style={asset(mapStylePath)}
-			location={{ bounds: [ukBounds.slice(0, 2), ukBounds.slice(2)] }}
+			location={{
+				bounds: [
+					[ukBounds[0], ukBounds[1]],
+					[ukBounds[2], ukBounds[3]]
+				]
+			}}
 			options={{
 				fitBoundsOptions,
 				maxBounds,

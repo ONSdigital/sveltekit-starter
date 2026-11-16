@@ -9,6 +9,9 @@
 		"package": "vite package",
 		"preview": "vite preview",
 		"lint": "prettier --check .",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+		"check:conventions": "node scripts/check-conventions.js",
+		"verify": "npm run lint && npm run check && npm run check:conventions && cross-env STRICT_PRERENDER=true npm run build",
 		"format": "prettier --write ."
 	},
 	"author": "Ahmad Barclay",
@@ -27,7 +30,9 @@
 		"prettier-plugin-svelte": "^3.2.6",
 		"simple-statistics": "^7.12.1",
 		"svelte": "^5.55.8",
+		"svelte-check": "^4.7.8",
 		"topojson-client": "^3.1.0",
+		"typescript": "^6.0.3",
 		"vite": "^7.3.8"
 	},
 	"dependencies": {

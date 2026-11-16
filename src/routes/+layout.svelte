@@ -4,6 +4,8 @@
 	import "../app.css";
 	import { page } from "$app/state";
 	import { app_url } from "../app.config.js";
+
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -19,4 +21,4 @@
 	<meta name="description" content={page.data?.pageDescription || ""} />
 </svelte:head>
 
-<slot />
+{@render children()}

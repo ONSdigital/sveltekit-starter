@@ -1,7 +1,7 @@
-import * as env from "$env/static/public";
+import { PUBLIC_APP_ENV } from "$env/static/public";
 import { app_url } from "../app.config.js";
 
-export const prerender = env?.PUBLIC_APP_ENV !== "preview";
+export const prerender = PUBLIC_APP_ENV !== "preview";
 export const trailingSlash = "always";
 
 export function load({ url }) {

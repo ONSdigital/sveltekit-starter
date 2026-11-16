@@ -4,6 +4,7 @@ import { base_preview, base_prod } from "./src/app.config.js";
 
 const preview = process.env.PUBLIC_APP_ENV === "preview";
 const production = process.env.NODE_ENV === "production";
+const strict = process.env.STRICT_PRERENDER === "true";
 // The preview build is not prerendered, so it can't use relative URLs (see src/app.config.js)
 if (preview && !base_preview) {
 	throw new Error(
@@ -15,6 +16,12 @@ const base = (preview ? base_preview : production ? base_prod : "") || "";
 const relative = !base;
 
 const config = {
+	compilerOptions: {
+		// Compile the app's own components in runes mode (Svelte 5 syntax), so Svelte 4 syntax such as
+		// `export let`, `$:`, `<slot>` and `on:click` is an error. Files in node_modules are left alone,
+		// because svelte-maps and svelte-charts are Svelte 4-style components.
+		runes: ({ filename }) => (filename.split(/[/\\]/).includes("node_modules") ? undefined : true)
+	},
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
 		adapter: adapter({
@@ -25,8 +32,9 @@ const config = {
 			fallback: preview ? "404.html" : undefined
 		}),
 		prerender: {
-			handleHttpError: "warn",
-			handleMissingId: "warn"
+			// Broken links and missing #ids are warnings, but `npm run verify` makes them errors
+			handleHttpError: strict ? "fail" : "warn",
+			handleMissingId: strict ? "fail" : "warn"
 		},
 		paths: {
 			base,
