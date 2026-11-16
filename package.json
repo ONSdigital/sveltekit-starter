@@ -11,6 +11,7 @@
 		"lint": "prettier --check .",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:conventions": "node scripts/check-conventions.js",
+		"use-template": "node scripts/use-template.js",
 		"verify": "npm run lint && npm run check && npm run check:conventions && cross-env STRICT_PRERENDER=true npm run build",
 		"format": "prettier --write ."
 	},
