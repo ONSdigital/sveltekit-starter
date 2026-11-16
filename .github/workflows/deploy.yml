@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Verify
+        run: npm run verify
+
       - name: Build
         run: npm run build:preview
 

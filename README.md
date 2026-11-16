@@ -18,9 +18,49 @@ With dependencies installed, you should be able to preview the templates locally
 npm run dev
 ```
 
-You will find the code for the starter templates within the /src/routes/ folder. You will probably want to take the **+page.svelte** file for the relevant template folder, overwrite the **/src/routes/+pages.svelte** file, and then delete the templates that you don't intend to use.
+The templates are in the **/src/routes/** folder:
+
+| Template  | What it is                                                                     |
+| --------- | ------------------------------------------------------------------------------ |
+| `article` | An article page in the style of the ONS website                                |
+| `feature` | A full page feature article, with scrollytelling                               |
+| `embed`   | An interactive designed to be embedded in an iframe                            |
+| `data`    | A page that loads a CSV file, with an area search, a chart, a table and a stat |
+| `map`     | A choropleth map with area and postcode search                                 |
+
+To start an app from one of them, commit any changes and run this command, with the template's name. It moves the template's files into **/src/routes/**, replacing the index page, and deletes the other templates:
+
+```bash
+npm run use-template -- data
+```
+
+Then set **app_url** in **/src/app.config.js**, and the page title and description in **/src/routes/+layout.js**.
 
 To do more with the ONS svelte-components library, you will probably want to refer to the [Storybook pages](https://onsdigital.github.io/svelte-components/).
+
+### Checking your changes
+
+Run this command before you commit or publish:
+
+```bash
+npm run verify
+```
+
+It checks the formatting (fix it with `npm run format`), the components' props and types, some common mistakes (such as links that start with `/`, which break when the app is published to a sub-folder) and that every page builds, with no broken links. It also runs when you push to GitHub or open a pull request.
+
+## Building with a coding agent
+
+This starter is set up for coding agents such as Claude Code and GitHub Copilot (in agent mode):
+
+- **[AGENTS.md](AGENTS.md)** tells agents how the project works, where to find the svelte-components docs (the `llms.txt` files in the package), the rules to follow and how to check their work. Claude Code reads it through **CLAUDE.md**, and Copilot reads it directly or through **.github/copilot-instructions.md**.
+- **Svelte MCP server**: `.mcp.json` (Claude Code) and `.vscode/mcp.json` (VS Code) add the official [Svelte MCP server](https://svelte.dev/docs/mcp/overview), which gives agents the Svelte docs and a tool that checks the Svelte code they write. Your tool asks you to allow it the first time.
+- **Workflows**: `new-app` starts an app from a brief, and `review-page` reviews a page before you publish it. In Claude Code, ask for them by name or type `/new-app`. In Copilot Chat, type `/new-app` or `/review-page` (they're in **.github/prompts/**).
+
+Tips:
+
+- Start by describing what you want, with the data, and ask the agent for a plan before it writes code.
+- Ask it to run `npm run verify`, and look at the pages yourself in `npm run dev`. Agents can make pages that pass the checks but look or read wrong.
+- Review the changes like any other code before you publish: the text, the numbers, the accessibility (labels, alt text, a table for each chart) and that no template text is left.
 
 ## Building and Deploying
 

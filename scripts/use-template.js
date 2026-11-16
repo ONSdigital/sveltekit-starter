@@ -56,6 +56,5 @@ for (const template of present) {
 console.log(`
 Your app now starts from the "${name}" template. Next:
 - In src/app.config.js, set app_url (and base_prod/base_preview if the app has a fixed path).
-- In src/lib/config.js, fill in analyticsProps.
 - Set the page title and description in src/routes/+layout.js.
 - Run npm run verify, then commit.`);
