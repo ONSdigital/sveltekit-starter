@@ -31,7 +31,10 @@ if (!present.includes(name)) {
 }
 
 try {
-	const status = execFileSync("git", ["status", "--porcelain"], { encoding: "utf8" });
+	const status = execFileSync("git", ["status", "--porcelain"], {
+		encoding: "utf8",
+		stdio: ["ignore", "pipe", "ignore"]
+	});
 	if (status.trim()) {
 		console.error(
 			"Commit or stash your changes first, so that this can be undone with git:\n" + status
@@ -39,7 +42,12 @@ try {
 		process.exit(1);
 	}
 } catch {
-	console.error("This script needs git, so that its changes can be undone.");
+	console.error(`This script needs a git repository, so that its changes can be undone. If you
+downloaded the starter as a ZIP file, start one with:
+
+  git init && git add -A && git commit -m "Start from sveltekit-starter"
+
+and run this again.`);
 	process.exit(1);
 }
 

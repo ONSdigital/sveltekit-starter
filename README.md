@@ -28,7 +28,7 @@ The templates are in the **/src/routes/** folder:
 | `data`    | A page that loads a CSV file, with an area search, a chart, a table and a stat |
 | `map`     | A choropleth map with area and postcode search                                 |
 
-To start an app from one of them, commit any changes and run this command, with the template's name. It moves the template's files into **/src/routes/**, replacing the index page, and deletes the other templates:
+To start an app from one of them, commit any changes and run this command, with the template's name. (If you downloaded the ZIP file, first start a git repository: `git init && git add -A && git commit -m "Start from sveltekit-starter"`.) It moves the template's files into **/src/routes/**, replacing the index page, and deletes the other templates:
 
 ```bash
 npm run use-template -- data

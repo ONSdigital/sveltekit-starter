@@ -6,15 +6,15 @@ Guidance for coding agents (Claude Code, GitHub Copilot and others) and for peop
 
 A SvelteKit app for ONS (Office for National Statistics) data visualisation, built on [`@onsvisual/svelte-components`](https://github.com/ONSdigital/svelte-components/) ([Storybook docs](https://onsdigital.github.io/svelte-components/)). The starter has one template per route in `src/routes/`, and the root `+page.svelte` is an index linking to them:
 
-| Template  | Shows how to                                                                                           |
-| --------- | ------------------------------------------------------------------------------------------------------ |
-| `article` | lay out an article in the style of the ONS website: Hero, Sections, a chart, a blockquote              |
-| `feature` | build a full page feature, with a scrollytelling `Scroller` (snippets and callbacks)                   |
-| `embed`   | make an interactive for an iframe (`Embed`), with a bound `Select`                                     |
-| `data`    | load a CSV in `+page.js`, with an area search, `$derived` stats, `ChangeStat`, a chart and a `Table`   |
-| `map`     | draw a choropleth map with svelte-maps, with area and postcode search (see `src/routes/map/README.md`) |
+| Template  | Shows how to                                                                                         |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| `article` | lay out an article in the style of the ONS website: Hero, Sections, a chart, a blockquote            |
+| `feature` | build a full page feature, with a scrollytelling `Scroller` (snippets and callbacks)                 |
+| `embed`   | make an interactive for an iframe (`Embed`), with a bound `Select`                                   |
+| `data`    | load a CSV in `+page.js`, with an area search, `$derived` stats, `ChangeStat`, a chart and a `Table` |
+| `map`     | draw a choropleth map with svelte-maps, with area and postcode search (see its `README.md`)          |
 
-A new app starts from one template: `npm run use-template -- <name>` moves that template's files into `src/routes/` and deletes the others. If `src/routes/` has no template folders, that has already been done. Look at the templates (or this repository on GitHub) for working examples of the patterns below.
+A new app starts from one template: `npm run use-template -- <name>` moves that template's files into `src/routes/` and deletes the others. If `src/routes/` has no template folders, that has already been done. Look at the templates for working examples of the patterns below. After `use-template`, the other templates are only on GitHub: [https://github.com/ONSdigital/sveltekit-starter](https://github.com/ONSdigital/sveltekit-starter) (eg. [the data template](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/data/+page.svelte)).
 
 ## Before writing code
 
@@ -54,17 +54,17 @@ There's no test suite. Instead:
 - **Events**: svelte-components take callback props, eg. `<Button onClick={...}>`, `<Select onChange={(value) => ...}>`. `@onsvisual/svelte-maps` and `@onsvisual/svelte-charts` components are Svelte 4-style, so use `on:` events (and `bind:`) with those only.
 - **Bindings**: bind to a `$state` variable, eg. `let value = $state(null);` and `<Select bind:value />`.
 - **URLs**: never write a root-absolute URL (`href="/about/"`, `fetch("/data/x.csv")`), because the app is built with relative URLs and deployed to sub-paths. Link to pages with `pageUrl()` from `$lib/paths.js` (eg. `href={pageUrl("/data")}`), which adds the trailing slash the app's URLs need. Use `asset()` from `$app/paths` for files in `static/` (eg. `asset("/data/median-age.csv")`). Don't use the deprecated `base`/`assets` exports. External links (`https://...`) are fine.
-- **Data**: put data files in `static/data/`. Load data a page needs in its `+page.js`, with the `fetch` passed to `load()` and `asset()` (see `src/routes/data/+page.js`), so that it's in the prerendered page. Parse CSVs with `csvParse(text, autoType)` from `d3-dsv`. `simple-statistics` is installed for medians, quantiles and so on.
-- **Page structure**: `Header`, then `Main` around the content, then `Footer`. `Header` has a skip link to `#main`, which `Main` provides, so the build fails without it. Don't put a `Container` inside a `Section`, because `Section` already renders one (see "Architecture" below).
+- **Data**: put data files in `static/data/`. Load data a page needs in its `+page.js`, with the `fetch` passed to `load()` and `asset()` (see [the data template's `+page.js`](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/data/+page.js)), so that it's in the prerendered page. Parse CSVs with `csvParse(text, autoType)` from `d3-dsv`. `simple-statistics` is installed for medians, quantiles and so on.
+- **Page structure**: `Header`, then `Main` around the content, then `Footer`. `Header` has a skip link to `#main`, which `Main` provides, so `npm run verify` fails without it. Don't put a `Container` inside a `Section`, because `Section` already renders one (see "Architecture" below).
 - **Styling**: use the components first, then ONS Design System classes (eg. `ons-u-mb-l`, `ons-grid`), which the svelte-components CSS includes (llms.txt says which version). Put app-wide CSS in `src/app.css`, and component CSS in `<style>` blocks.
 - **Accessibility**: form components need a `label` (and an `id`). Charts need a `title`, and the data should also be available in another form, such as a `Table` or a sentence giving the key figures. Give images `alt` text.
 
 ### Traps found when building the templates
 
 - `Select` in `mode="search"` clears its value after each selection (`autoClear`), so with `bind:value` set `autoClear={false}`, and `clearable={true}` to show a clear button.
-- svelte-charts don't update their axis labels when the categories in their data change. Wrap the chart in `{#key ...}` on whatever changes the categories (see `src/routes/data/+page.svelte`).
+- `BarChart` from svelte-charts doesn't update its axis labels when the categories in its data change (other svelte-charts may behave the same). Wrap the chart in `{#key ...}` on whatever changes the categories (see [the data template](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/data/+page.svelte)).
 - svelte-charts animate between datasets, and throw "Cannot interpolate values of different type" in some cases when the data changes shape. `{#key}` avoids this too.
-- In `src/routes/map/ChoroplethMap.svelte`, the `Map` import from svelte-maps shadows the global `Map`, so don't use `new Map()` there.
+- In the map template's `ChoroplethMap.svelte`, the `Map` import from svelte-maps shadows the global `Map`, so don't use `new Map()` there.
 
 ## Starting a new app
 
@@ -112,7 +112,7 @@ Analytics: `src/lib/config.js` holds the GTM ID and `analyticsProps` placeholder
 
 ## Map + search template (`src/routes/map/`)
 
-This route is self-contained: its components, config and helpers all live in the folder, and `src/routes/map/README.md` explains how they fit together. In summary:
+This route is self-contained: its components, config and helpers all live in the folder, and its `README.md` explains how they fit together. After `npm run use-template -- map`, these files are in `src/routes/` instead. In summary:
 
 - It draws an ELS-style choropleth of `static/data/median-age.csv`, using LTLA boundaries from `static/master-topo.json` and the basemap in `static/data/mapstyle.json`.
 - Only boundaries with a CSV row are drawn and searchable. The TopoJSON also contains superseded districts that overlap current ones, so don't drop this filter.
