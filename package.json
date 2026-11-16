@@ -15,7 +15,7 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@onsvisual/svelte-charts": "^0.4.11",
-		"@onsvisual/svelte-components": "^2.0.1",
+		"@onsvisual/svelte-components": "^2.3.0",
 		"@onsvisual/svelte-maps": "^2.0.3",
 		"@sveltejs/adapter-static": "^3.0.0",
 		"@sveltejs/kit": "^2.60.1",
