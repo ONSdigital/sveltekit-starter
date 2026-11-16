@@ -57,7 +57,7 @@
 />
 <Main>
 	<Hero
-		title="Cookie banner and analytics"
+		title="Page analytics"
 		lede="An example of the ONS cookie banner, and of recording how people use a page."
 		theme="grey"
 	/>
@@ -105,6 +105,7 @@
 		<Button
 			cls="ons-u-mt-m"
 			variant="secondary"
+			small={true}
 			onClick={() =>
 				track({ event: "interaction", interactionType: "button", interactionValue: "example" })}
 			>Record a button press</Button
@@ -123,6 +124,13 @@
 <Footer compact />
 
 <style>
+	/* Inline code, styled as on the ONS website (the analyticsProps block below is excluded) */
+	:not(pre) > code {
+		background: var(--ons-color-grey-5);
+		color: var(--ons-color-ruby-red);
+		padding: 0.05rem 0.25rem;
+	}
+
 	.config {
 		background: var(--ons-color-grey-5);
 		padding: 12px 16px;

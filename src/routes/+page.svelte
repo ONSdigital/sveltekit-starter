@@ -31,7 +31,7 @@
 		<Card title="Interactive map" href={pageUrl("/map")} mode="featured" baseline>
 			A choropleth map in the style of Explore Local Statistics, with area and postcode search.
 		</Card>
-		<Card title="Cookie banner and analytics" href={pageUrl("/analytics")} mode="featured" baseline>
+		<Card title="Page analytics" href={pageUrl("/analytics")} mode="featured" baseline>
 			The ONS cookie banner, and recording how people use a page with analytics events.
 		</Card>
 	</Grid>

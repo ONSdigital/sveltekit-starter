@@ -7,7 +7,7 @@
 
 <script>
 	import { onMount } from "svelte";
-	import { Header, Main, Container, Footer } from "@onsvisual/svelte-components";
+	import { PhaseBanner, Header, Main, Container, Footer } from "@onsvisual/svelte-components";
 	import ChoroplethMap from "./ChoroplethMap.svelte";
 	import AreaSearch from "./AreaSearch.svelte";
 	import { loadMapData } from "./map-utils.js";
@@ -39,7 +39,8 @@
 	});
 </script>
 
-<Header />
+<PhaseBanner phase="Prototype" />
+<Header headerBorder={true} />
 <Main>
 	<Container width="medium" cls="ons-u-mb-s">
 		<h1 class="ons-u-mt-l">{indicator.label} by local authority</h1>
