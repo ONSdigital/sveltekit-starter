@@ -92,8 +92,8 @@
 	autoClear={false}
 	bind:value
 	{loadOptions}
-	on:change={(e) => handleChange(e.detail)}
-	on:clear={handleClear}
+	onChange={handleChange}
+	onClear={handleClear}
 />
 {#if error}
 	<div class="error-message">

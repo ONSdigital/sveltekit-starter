@@ -79,12 +79,12 @@
 	<Scroller
 		id="scroller"
 		splitscreen
-		on:change={(e) => {
-			scrollerColor = scrollerColors[e.detail.index];
-			console.debug("change", e);
+		onChange={({ index }) => {
+			scrollerColor = scrollerColors[index ?? 0];
+			console.debug("change", index);
 		}}
-		on:enter={(e) => console.debug("enter", e)}
-		on:exit={(e) => console.debug("exit", e)}
+		onEnter={(detail) => console.debug("enter", detail)}
+		onExit={(detail) => console.debug("exit", detail)}
 	>
 		<!-- svelte-components 2's Scroller takes snippets, not slots -->
 		{#snippet background()}

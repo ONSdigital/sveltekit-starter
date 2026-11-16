@@ -7,7 +7,7 @@
 
 <script>
 	import { onMount } from "svelte";
-	import { Container, Section } from "@onsvisual/svelte-components";
+	import { PhaseBanner, Header, Main, Container, Footer } from "@onsvisual/svelte-components";
 	import ChoroplethMap from "./ChoroplethMap.svelte";
 	import AreaSearch from "./AreaSearch.svelte";
 	import { loadMapData } from "./map-utils.js";
@@ -39,37 +39,42 @@
 	});
 </script>
 
-<Container width="medium" cls="ons-u-mb-s">
-	<h1 class="ons-u-mt-l">{indicator.label} by local authority</h1>
-	<h2 class="map-title">
-		{indicator.label} ({indicator.unit}), {formatPeriod(period)}
-	</h2>
-	{#if loadError}
-		<div class="error-message">
-			<p><strong>Error:</strong> {loadError}</p>
-		</div>
-	{:else if loading}
-		<div class="loading-message">
-			<p>Loading map data...</p>
-		</div>
-	{:else}
-		<AreaSearch {features} bind:selected />
-	{/if}
-</Container>
+<PhaseBanner phase="Prototype" />
+<Header headerBorder={true} />
+<Main>
+	<Container width="medium" cls="ons-u-mb-s">
+		<h1 class="ons-u-mt-l">{indicator.label} by local authority</h1>
+		<h2 class="map-title">
+			{indicator.label} ({indicator.unit}), {formatPeriod(period)}
+		</h2>
+		{#if loadError}
+			<div class="error-message">
+				<p><strong>Error:</strong> {loadError}</p>
+			</div>
+		{:else if loading}
+			<div class="loading-message">
+				<p>Loading map data...</p>
+			</div>
+		{:else}
+			<AreaSearch {features} bind:selected />
+		{/if}
+	</Container>
 
-<Container width="medium">
-	{#if data.length && features.length}
-		<ChoroplethMap
-			{data}
-			{features}
-			metadata={indicator}
-			bind:selected
-			bind:hovered
-			{formatValue}
-		/>
-		<p class="map-source">Source: {indicator.source}</p>
-	{/if}
-</Container>
+	<Container width="medium">
+		{#if data.length && features.length}
+			<ChoroplethMap
+				{data}
+				{features}
+				metadata={indicator}
+				bind:selected
+				bind:hovered
+				{formatValue}
+			/>
+			<p class="map-source">Source: {indicator.source}</p>
+		{/if}
+	</Container>
+</Main>
+<Footer compact />
 
 <style>
 	.error-message {

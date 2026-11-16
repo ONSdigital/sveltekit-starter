@@ -19,6 +19,7 @@ export const mapStylePath = "/data/mapstyle.json";
 export const topoPath = "/master-topo.json";
 
 // [west, south, east, north]
+/** @type {[number, number, number, number]} */
 export const ukBounds = [-8.65, 49.867, 1.761, 60.856];
 export const maxBounds = [-22, 48, 17, 62];
 

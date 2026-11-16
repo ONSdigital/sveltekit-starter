@@ -2,9 +2,10 @@
 export const analyticsId = "GTM-MBCBVQS";
 
 export const analyticsProps = {
+	product: "advanced-content",
 	contentTitle: "Product title", // Insert the title of the product here
+	contentType: "interactive",
 	releaseDate: "YYYYMMDD",
-	contentType: "content-type", // Optional: eg. scrollytelling, exploratory, edutainment?
 	outputSeries: "url-slug-for-output-series" // Should match the slug for the release on CMS
 };
 

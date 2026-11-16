@@ -1,5 +1,12 @@
 <script>
 	import { Embed, Highlight, Select, Section, Grid } from "@onsvisual/svelte-components";
+	import { regions } from "$lib/config.js";
+
+	// Options for the area selector, in the { id, label } format that Select expects
+	const options = regions.map((region) => ({ id: region.cd, label: region.nm }));
+
+	// The selected area ({ id, label }), bound to the Select below. null until one is chosen.
+	let selected = $state(null);
 </script>
 
 <Embed>
@@ -7,7 +14,10 @@
 		<div style:padding="0 12px">
 			<h2>This is a sub-headline</h2>
 			<p>This is a description of the embedded interactive.</p>
-			<Select label="Select your area" />
+			<Select id="area-select" label="Select your area" {options} bind:value={selected} />
+			{#if selected}
+				<p class="ons-u-mt-s">You selected <strong>{selected.label}</strong> ({selected.id}).</p>
+			{/if}
 		</div>
 	</Highlight>
 
