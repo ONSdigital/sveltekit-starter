@@ -25,6 +25,9 @@
 		<Card title="Embedded interactive" href={pageUrl("/embed")} mode="featured" baseline>
 			A template for interactive content to be embedded within an iframe.
 		</Card>
+		<Card title="Data page" href={pageUrl("/data")} mode="featured" baseline>
+			A page that loads data from a CSV file, with an area search, a chart, a table and a stat.
+		</Card>
 		<Card title="Map and search" href={pageUrl("/map")} mode="featured" baseline>
 			A choropleth map in the style of Explore Local Statistics, with area and postcode search.
 		</Card>
