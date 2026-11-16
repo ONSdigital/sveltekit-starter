@@ -6,15 +6,17 @@ Guidance for coding agents (Claude Code, GitHub Copilot and others) and for peop
 
 A SvelteKit app for ONS (Office for National Statistics) data visualisation, built on [`@onsvisual/svelte-components`](https://github.com/ONSdigital/svelte-components/) ([Storybook docs](https://onsdigital.github.io/svelte-components/)). The starter has one template per route in `src/routes/`, and the root `+page.svelte` is an index linking to them:
 
-| Template  | Shows how to                                                                                         |
-| --------- | ---------------------------------------------------------------------------------------------------- |
-| `article` | lay out an article in the style of the ONS website: Hero, Sections, a chart, a blockquote            |
-| `feature` | build a full page feature, with a scrollytelling `Scroller` (snippets and callbacks)                 |
-| `embed`   | make an interactive for an iframe (`Embed`), with a bound `Select`                                   |
-| `data`    | load a CSV in `+page.js`, with an area search, `$derived` stats, `ChangeStat`, a chart and a `Table` |
-| `map`     | draw a choropleth map with svelte-maps, with area and postcode search (see its `README.md`)          |
+| Template  | Shows how to                                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `article` | lay out an article in the style of the ONS website: Hero, Sections, a chart, a blockquote                      |
+| `feature` | build a full page feature, with a scrollytelling `Scroller` (snippets and callbacks)                           |
+| `embed`   | make an interactive for an iframe (`Embed`), with a bound `Select`                                             |
+| `data`    | load a CSV in `+page.js`, with an area search, `$derived` stats, `ChangeStat`, a chart and a `Table`           |
+| `map`     | "Interactive map": draw a choropleth map with svelte-maps, with area and postcode search (see its `README.md`) |
 
-A new app starts from one template: `npm run use-template -- <name>` moves that template's files into `src/routes/` and deletes the others. If `src/routes/` has no template folders, that has already been done. Look at the templates for working examples of the patterns below. After `use-template`, the other templates are only on GitHub: [https://github.com/ONSdigital/sveltekit-starter](https://github.com/ONSdigital/sveltekit-starter) (eg. [the data template](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/data/+page.svelte)).
+There's also an example page, `analytics`, which shows the ONS cookie banner (`AnalyticsBanner`) and how to record interactions with `analyticsEvent()`. It isn't a template to start from: copy what you need from it.
+
+A new app starts from one template: `npm run use-template -- <name>` moves that template's files into `src/routes/` and deletes the others, and the `analytics` example. If `src/routes/` has no template folders, that has already been done. Look at the templates for working examples of the patterns below. After `use-template`, the other templates are only on GitHub: [https://github.com/ONSdigital/sveltekit-starter](https://github.com/ONSdigital/sveltekit-starter) (eg. [the data template](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/data/+page.svelte)).
 
 ## Before writing code
 
@@ -74,7 +76,7 @@ There's no test suite. Instead:
 4. Replace the template's example content and data, keeping the patterns above.
 5. `npm run verify`, then look at the pages in `npm run dev`.
 
-Analytics: `src/lib/config.js` holds the GTM ID and `analyticsProps` placeholders, but no template adds the cookie banner and analytics (`AnalyticsBanner` from svelte-components) yet.
+Analytics: to add the ONS cookie banner and analytics, fill in `analyticsProps` in `src/lib/config.js` and put `AnalyticsBanner` once in `src/routes/+layout.svelte`, as [the analytics example](https://github.com/ONSdigital/sveltekit-starter/blob/main/src/routes/analytics/+page.svelte) explains. Use `analyticsEvent()` to record interactions.
 
 ## Tooling
 
@@ -110,7 +112,7 @@ Analytics: `src/lib/config.js` holds the GTM ID and `analyticsProps` placeholder
 - **`src/lib/config.js`** holds the analytics config, the colour themes, and demo data (regions, palettes, units).
 - **`Section` vs `Container`** (svelte-components): `Section` renders its own `Container`, which has `marginBottom` set to `true` and `width` set to `"narrow"` (8 of 12 columns at large widths). Don't nest a `Container` inside a `Section`. Use one or the other, and set the margins and width on whichever you use.
 
-## Map + search template (`src/routes/map/`)
+## Interactive map template (`src/routes/map/`)
 
 This route is self-contained: its components, config and helpers all live in the folder, and its `README.md` explains how they fit together. After `npm run use-template -- map`, these files are in `src/routes/` instead. In summary:
 

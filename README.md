@@ -26,9 +26,11 @@ The templates are in the **/src/routes/** folder:
 | `feature` | A full page feature article, with scrollytelling                               |
 | `embed`   | An interactive designed to be embedded in an iframe                            |
 | `data`    | A page that loads a CSV file, with an area search, a chart, a table and a stat |
-| `map`     | A choropleth map with area and postcode search                                 |
+| `map`     | An interactive choropleth map, with area and postcode search                   |
 
-To start an app from one of them, commit any changes and run this command, with the template's name. (If you downloaded the ZIP file, first start a git repository: `git init && git add -A && git commit -m "Start from sveltekit-starter"`.) It moves the template's files into **/src/routes/**, replacing the index page, and deletes the other templates:
+There's also an example page, `analytics`, which shows the ONS cookie banner and how to record interactions with analytics events.
+
+To start an app from one of them, commit any changes and run this command, with the template's name. (If you downloaded the ZIP file, first start a git repository: `git init && git add -A && git commit -m "Start from sveltekit-starter"`.) It moves the template's files into **/src/routes/**, replacing the index page, and deletes the other templates and the analytics example:
 
 ```bash
 npm run use-template -- data

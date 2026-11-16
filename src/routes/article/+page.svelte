@@ -11,6 +11,7 @@
 		Footer
 	} from "@onsvisual/svelte-components";
 	import { BarChart } from "@onsvisual/svelte-charts";
+	import { pageUrl } from "$lib/paths.js";
 
 	const data = [
 		{ year: 2017, value: 320 },
@@ -23,10 +24,7 @@
 <PhaseBanner phase="Prototype" />
 <Header />
 <Breadcrumb
-	links={[
-		{ label: "Home", href: "https://www.ons.gov.uk/" },
-		{ label: "This is a regular article" }
-	]}
+	links={[{ label: "Home", href: pageUrl("/") }]}
 	background="var(--ons-color-banner-bg)"
 />
 <Main>

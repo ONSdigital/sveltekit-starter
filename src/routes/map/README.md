@@ -1,4 +1,4 @@
-# Map + search template
+# Interactive map template
 
 A choropleth map styled to match the maps on [Explore Local Statistics (ELS)](https://www.ons.gov.uk/explore-local-statistics/), with search by area name or postcode. One area can be selected at a time, by searching or by clicking the map. Use the clear button in the search box to clear the selection.
 

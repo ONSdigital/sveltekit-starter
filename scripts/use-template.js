@@ -1,7 +1,7 @@
 // Start an app from one of the templates: npm run use-template -- <name>
 //
 // Moves the files of src/routes/<name>/ into src/routes/ (replacing the index page) and deletes the
-// other templates. It refuses to run if git has uncommitted changes, so it can be undone with git.
+// other templates and the example pages (eg. analytics). It refuses to run if git has uncommitted changes, so it can be undone with git.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -13,8 +13,10 @@ const TEMPLATES = {
 	feature: "A full page feature article, with scrollytelling",
 	embed: "An interactive designed to be embedded in an iframe",
 	data: "A page that loads a CSV file, with an area search, a chart, a table and a stat",
-	map: "A choropleth map with area and postcode search"
+	map: "An interactive choropleth map, with area and postcode search"
 };
+// Example pages to copy code from, which are deleted along with the unused templates
+const EXAMPLES = ["analytics"];
 
 const name = process.argv[2];
 if (!name || !(name in TEMPLATES)) {
@@ -56,7 +58,10 @@ for (const file of fs.readdirSync(source)) {
 	fs.renameSync(path.join(source, file), path.join(ROUTES, file));
 	console.log(`moved src/routes/${name}/${file} -> src/routes/${file}`);
 }
-for (const template of present) {
+for (const template of [
+	...present,
+	...EXAMPLES.filter((e) => fs.existsSync(path.join(ROUTES, e)))
+]) {
 	fs.rmSync(path.join(ROUTES, template), { recursive: true, force: true });
 	console.log(`deleted src/routes/${template}/`);
 }

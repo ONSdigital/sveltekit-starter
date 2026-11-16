@@ -2,6 +2,7 @@
 	import {
 		PhaseBanner,
 		Header,
+		Breadcrumb,
 		Hero,
 		Main,
 		Section,
@@ -12,6 +13,7 @@
 	} from "@onsvisual/svelte-components";
 	import { BarChart } from "@onsvisual/svelte-charts";
 	import { median } from "simple-statistics";
+	import { pageUrl } from "$lib/paths.js";
 
 	// Data from +page.js (an array of { areacd, areanm, period, value } rows)
 	let { data } = $props();
@@ -48,6 +50,10 @@
 
 <PhaseBanner phase="Prototype" />
 <Header />
+<Breadcrumb
+	links={[{ label: "Home", href: pageUrl("/") }]}
+	background="var(--ons-color-banner-bg)"
+/>
 <Main>
 	<Hero
 		title="Median age by local authority"
